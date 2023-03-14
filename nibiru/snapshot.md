@@ -1,4 +1,5 @@
-# Snapshot  nibiru (pruning: 100/0/19 | indexer: null | version tag: v0.19.2)
+# Snapshot nibiru Chain ID: nibiru-itn-1
+# (pruning: 100/0/19 | indexer: null | version tag: v0.19.2)
 ```
 sudo systemctl stop nibid
 ```
