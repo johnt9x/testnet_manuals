@@ -3,7 +3,7 @@
 ```
 sudo systemctl stop nibid
 cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
-rm -rf $HOME/.nibi/data
+rm -rf $HOME/.nibid/data
 ```
 # Download latest snapshot
 ```
