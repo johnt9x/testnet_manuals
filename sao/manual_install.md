@@ -107,7 +107,7 @@ sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:49317\"
 Download latest chain snapshot
 
 
-Start service and check the logs
+# Start service and check the logs
 ```
 sudo systemctl start saod && sudo journalctl -u saod -f --no-hostname -o cat
 ```
