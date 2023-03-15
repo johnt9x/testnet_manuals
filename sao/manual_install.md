@@ -1,7 +1,7 @@
 ```
 MONIKER="YOUR_MONIKER_GOES_HERE"
 ```
-Install dependencies
+# Install dependencies
 # Update system and install build tools
 ```
 sudo apt -q update
