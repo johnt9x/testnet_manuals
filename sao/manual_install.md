@@ -84,7 +84,7 @@ curl -Ls https://ss-t.sao.nodestake.top/genesis.json > $HOME/.sao/config/genesis
 ```
 # Add seeds
 ```
-sed -i -e "s|^seeds *=.*|seeds = \"1ed54d64859edbfe8109155c0cf6bdb04e592cb6@142.132.248.253:65528,87aae9e66b092c79c6e5e1a7c64ec21128359f7e@144.76.97.251:37656,841ae6ca44f1d51076c75ed3753e429775cb2ad9@134.209.76.124:26656,4f7898c70637f2a5c65ea909afcd47c10f090863@213.133.100.172:27544,00c031b6c1aaf3557618c9af37455fe67b7fff9c@185.188.249.18:15656,7fe67df2d13d1b229a0e24504e7c1afe5d3c6936@143.198.204.248:27656,c9b8e6019f398935cbda6f85a915447e67aac802@178.63.52.213:49656,a5298771c624a376fdb83c48cc6c630e58092c62@192.18.136.151:26656,a5261e9fba12d7a59cd1d4515a449e705734c39b@46.101.144.90:27656,b8429de484a1cf6108d57dc69fc02cd8b7592e01@157.230.245.237:09656,5bf4920fac1647e12a24c0ae5af4b3ca19db2bb2@57.128.86.7:26656,613db6dc57f294bd3238b241cdb66697cfe45c4b@207.154.251.199:27656\"|" $HOME/.sao/config/config.toml
+sed -i -e "s|^seeds *=.*|seeds = \"be6cd3a90f4ccbef6795af61055b8b0a4de172ed@86.48.16.205:49656,1ed54d64859edbfe8109155c0cf6bdb04e592cb6@142.132.248.253:65528,87aae9e66b092c79c6e5e1a7c64ec21128359f7e@144.76.97.251:37656,841ae6ca44f1d51076c75ed3753e429775cb2ad9@134.209.76.124:26656,4f7898c70637f2a5c65ea909afcd47c10f090863@213.133.100.172:27544,00c031b6c1aaf3557618c9af37455fe67b7fff9c@185.188.249.18:15656,7fe67df2d13d1b229a0e24504e7c1afe5d3c6936@143.198.204.248:27656,c9b8e6019f398935cbda6f85a915447e67aac802@178.63.52.213:49656,a5298771c624a376fdb83c48cc6c630e58092c62@192.18.136.151:26656,a5261e9fba12d7a59cd1d4515a449e705734c39b@46.101.144.90:27656,b8429de484a1cf6108d57dc69fc02cd8b7592e01@157.230.245.237:09656,5bf4920fac1647e12a24c0ae5af4b3ca19db2bb2@57.128.86.7:26656,613db6dc57f294bd3238b241cdb66697cfe45c4b@207.154.251.199:27656\"|" $HOME/.sao/config/config.toml
 ```
 # Set minimum gas price
 ```
@@ -104,12 +104,31 @@ sed -i \
 sed -i -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:49658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:49657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:49060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:49656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":49660\"%" $HOME/.sao/config/config.toml
 sed -i -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:49317\"%; s%^address = \":8080\"%address = \":49080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:49090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:49091\"%; s%^address = \"0.0.0.0:8545\"%address = \"0.0.0.0:49545\"%; s%^ws-address = \"0.0.0.0:8546\"%ws-address = \"0.0.0.0:49546\"%" $HOME/.sao/config/app.toml
 ```
-Download latest chain snapshot
-
-
+# Download latest chain snapshot
+```
+SNAP_NAME=$(curl -s https://ss-t.sao.nodestake.top/ | egrep -o ">20.*\.tar.lz4" | tr -d ">")
+curl -o - -L https://ss-t.sao.nodestake.top/${SNAP_NAME}  | lz4 -c -d - | tar -x -C $HOME/.sao
+```
 # Start service and check the logs
 ```
 sudo systemctl start saod && sudo journalctl -u saod -f --no-hostname -o cat
+```
+# Creat or recover wallet after sync complete
+Check sync info
+```
+saod status 2>&1 | jq .SyncInfo
+```
+Add new key 
+```
+saod keys add wallet 
+```
+Recover existing key 
+```
+saod keys add wallet --recover
+```
+Query wallet balance 
+```
+saod q bank balances $(saod keys show wallet -a)
 ```
 # Creat-validator
 ```
