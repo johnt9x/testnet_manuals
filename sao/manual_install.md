@@ -111,3 +111,20 @@ Download latest chain snapshot
 ```
 sudo systemctl start saod && sudo journalctl -u saod -f --no-hostname -o cat
 ```
+# Creat-validator
+```
+saod tx staking create-validator \
+--amount=900000sao \
+--pubkey=$(saod tendermint show-validator) \
+--moniker YOURNAME \
+--identity YOURKEYBASEID \
+--chain-id sao-testnet1 \
+--commission-rate 0.10 \
+--commission-max-rate 0.20 \
+--commission-max-change-rate 0.01 \
+--min-self-delegation 1 \
+--gas 2000000 \
+--gas-prices 0.0025sao \
+--from wallet \
+-y
+```
