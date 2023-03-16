@@ -113,7 +113,7 @@ curl -o - -L https://ss-t.sao.nodestake.top/${SNAP_NAME}  | lz4 -c -d - | tar -x
 ```
 sudo systemctl start saod && sudo journalctl -u saod -f --no-hostname -o cat
 ```
-# Creat or recover wallet after sync complete
+# Creat or recover wallet after sync fasle
 Check sync info
 ```
 saod status 2>&1 | jq .SyncInfo
