@@ -1,6 +1,8 @@
-# Add new key
+Add new key
+```
 saod keys add wallet
-# Recover existing key
+```
+Recover existing key
 saod keys add wallet --recover
 # List all keys
 saod keys list
