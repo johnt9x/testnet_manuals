@@ -103,7 +103,7 @@ Redelegate tokens to another validator
 saod tx staking redelegate $(saod keys show wallet --bech val -a) <TO_VALOPER_ADDRESS> 1000000sao --from wallet --chain-id sao-testnet1 --gas-adjustment 1.4 --gas auto --gas-prices 0.0001sao -y
 ```
 Unbond tokens from your validator
-
+```
 saod tx staking unbond $(saod keys show wallet --bech val -a) 1000000sao --from wallet --chain-id sao-testnet1 --gas-adjustment 1.4 --gas auto --gas-prices 0.0001sao -y
 ```
 Send tokens to the wallet
