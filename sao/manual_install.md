@@ -148,6 +148,7 @@ saod tx staking create-validator \
 -y
 ```
 # Remove sao node
+```
 cd $HOME
 sudo systemctl stop saod
 sudo systemctl disable saod
@@ -156,3 +157,4 @@ sudo systemctl daemon-reload
 rm -f $(which saod)
 rm -rf $HOME/.sao
 rm -rf $HOME/sao-consensus
+```
