@@ -79,8 +79,8 @@ saod init $MONIKER --chain-id sao-testnet1
 ```
 # Download genesis and addrbook
 ```
-curl -Ls https://snapshots.kjnodes.com/sao-testnet/genesis.json > $HOME/.sao/config/genesis.json
-curl -Ls https://snapshots.kjnodes.com/sao-testnet/addrbook.json > $HOME/.sao/config/addrbook.json
+curl -Ls https://ss-t.sao.nodestake.top/addrbook.json > $HOME/.sao/config/addrbook.json
+curl -Ls https://ss-t.sao.nodestake.top/genesis.json > $HOME/.sao/config/genesis.json 
 ```
 # Add seeds
 ```
