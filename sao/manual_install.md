@@ -135,7 +135,7 @@ saod q bank balances $(saod keys show wallet -a)
 saod tx staking create-validator \
 --amount=900000sao \
 --pubkey=$(saod tendermint show-validator) \
---moniker YOURNAME \
+--moniker YOURMONIKERNAME \
 --identity YOURKEYBASEID \
 --chain-id sao-testnet1 \
 --commission-rate 0.10 \
