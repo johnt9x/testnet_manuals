@@ -142,9 +142,10 @@ saod tx staking create-validator \
 --commission-max-rate 0.20 \
 --commission-max-change-rate 0.01 \
 --min-self-delegation 1 \
---gas 2000000 \
---gas-prices 0.0025sao \
---from wallet \
+--from wallet \ 
+--gas-adjustment 1.4 \ 
+--gas auto \ 
+--gas-prices 0.0001sao \ 
 -y
 ```
 # Remove sao node
